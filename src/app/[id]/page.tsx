@@ -13,9 +13,13 @@ async function getData() {
   return res.json();
 }
 
-export default async function Home() {
+interface HomeProps {
+  params: { id: string };
+}
+
+export default async function Home({ params }: HomeProps) {
   const data = await getData();
-  const review = data[0]; //FIXME:
+  const review = data[params.id];
   console.log(review);
 
   return (
